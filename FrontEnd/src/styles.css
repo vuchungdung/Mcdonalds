@@ -2,3 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
+html{
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+}

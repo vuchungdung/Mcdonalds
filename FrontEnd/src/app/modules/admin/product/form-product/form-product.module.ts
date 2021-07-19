@@ -1,26 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from './product.component';
+import { FormProductComponent } from './form-product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { CKEditorModule } from 'ckeditor4-angular';
 const routes: Routes = [
   {
     path:'',
-    component: ProductComponent,
+    component: FormProductComponent,
     pathMatch:'full'
   }
 ]
 
 @NgModule({
-  declarations: [
-    ProductComponent
-  ],
+  declarations: [FormProductComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     RouterModule,
-    SharedModule
+    SharedModule,
+    CKEditorModule
   ]
 })
-export class ProductModule { }
+export class FormProductModule { }

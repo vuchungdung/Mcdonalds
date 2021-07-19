@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -22,6 +20,10 @@ const routes: Routes = [
       {
         path:'product',
         loadChildren: () => import('./product/product.module').then(m=>m.ProductModule)
+      },
+      {
+        path:'form-product',
+        loadChildren: ()=> import('./product/form-product/form-product.module').then(m=>m.FormProductModule)
       }
     ]
   },
@@ -39,8 +41,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     RouterModule,
-    NzLayoutModule,
-    NzMenuModule,
     SharedModule
   ],
   providers:[]

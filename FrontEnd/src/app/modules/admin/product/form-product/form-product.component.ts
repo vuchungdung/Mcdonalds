@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-product.component.css']
 })
 export class FormProductComponent implements OnInit {
-
+  loading = false;
+  avatarUrl?: string;
+  listOfOption: any = ['a','b','c','d'];
   constructor() { }
 
   ngOnInit(): void {

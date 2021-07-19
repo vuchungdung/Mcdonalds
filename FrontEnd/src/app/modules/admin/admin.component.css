@@ -4,9 +4,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.ant-layout{
+  background-color: #ebebeb;
+}
 .app-layout {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .menu-sidebar {
@@ -47,11 +49,10 @@
 
 .sidebar-logo h1 {
   display: inline-block;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 10px;
   color: #fff;
   font-weight: 600;
-  font-size: 14px;
-  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;
+  font-size: 15px;
   vertical-align: middle;
 }
 
@@ -77,5 +78,5 @@ nz-content {
   border-radius: 5px;
   padding: 12px;
   background: #fff;
-  height: 100%;
+  height: auto;
 }
