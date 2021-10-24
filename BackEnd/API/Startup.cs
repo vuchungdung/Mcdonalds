@@ -1,4 +1,3 @@
-using API.Areas.Admin.Services;
 using API.Entities;
 using API.Helper;
 using API.Hubs;
@@ -58,7 +57,6 @@ namespace API
                 };
             });
             services.AddSignalR();
-            services.AddScoped<IUserService, UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -89,13 +87,6 @@ namespace API
 
             app.UseEndpoints(endpoints =>
             {
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllerRoute(
-                      name: "areas",
-                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                    );
-                });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
