@@ -30,5 +30,8 @@ namespace API.Entities
         public DbSet<Command> Commands { get; set; }
         public DbSet<CommandInFunction> CommandInFunctions { get; set; }
         public DbSet<Log> Logs { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }
