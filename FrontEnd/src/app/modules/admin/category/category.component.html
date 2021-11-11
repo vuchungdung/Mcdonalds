@@ -1,1 +1,24 @@
-<p>category works!</p>
+<nz-table 
+    #basicTable 
+    [nzData]="listCategories"
+    nzShowPagination
+    nzShowSizeChanger
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+  <thead>
+    <tr>
+      <th>Tên danh mục</th>
+      <th>Mô tả danh mục</th>
+      <th>Nghiệp vụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.description }}</td>
+      <td>
+        <a style="font-weight: 600;color:green" (click)="toEdit(data.id)" >Sửa</a> 一 <a style="font-weight: 600;color:red" (click)="deleted(data.id)" >Xóa</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

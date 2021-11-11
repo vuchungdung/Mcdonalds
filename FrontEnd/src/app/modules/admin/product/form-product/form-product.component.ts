@@ -13,5 +13,7 @@ export class FormProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  save(){
+    console.log("hello");
+  }
 }

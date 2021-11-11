@@ -1,0 +1,45 @@
+<form novalidate [formGroup]="categoryForm" (submit)="save()">
+  <div class="px-4 py-5 bg-white space-y-6 sm:p-2">
+    <div class="grid gap-6">
+      <div class="col-span-3 sm:col-span-2">
+        <input nz-input formControlName="id" style="display: none;" />
+        <div>
+          <label class="block text-sm font-medium text-gray-700">
+            Tên danh mục sản phẩm
+          </label>
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <input nz-input formControlName="name" placeholder="Nhập tên danh mục sản phẩm" />
+          </div>
+        </div>
+        <div class="mt-4">
+          <label class="block text-sm font-medium text-gray-700">
+            Mô tả danh mục sản phẩm
+          </label>
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <input nz-input formControlName="description" placeholder="Nhập mô tả danh mục sản phẩm" />
+          </div>
+        </div>
+        <!-- <div class="mt-4">
+          <label class="block text-sm font-medium text-gray-700">
+            Danh mục gốc
+          </label>
+          <nz-select nzShowSearch formControlName="parentId" nzAllowClear nzPlaceHolder="Chọn danh mục gốc">
+            <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+            <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+            <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+          </nz-select>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="px-4 py-3 text-right sm:px-6">
+    <button type="submit"
+      class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      Lưu lại
+    </button>
+    <button (click)="back()" type="button"
+      class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md">
+      Quay lại
+    </button>
+  </div>
+</form>

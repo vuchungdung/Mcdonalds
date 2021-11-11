@@ -21,6 +21,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Route("insert")]
         public async Task<IActionResult> Add(CategoryViewModel viewModel)
         {
             try
@@ -31,13 +32,15 @@ namespace API.Controllers
                 category.ParentId = viewModel.ParentId;
                 _db.Categories.Add(category);
                 await _db.SaveChangesAsync();
-                return Ok(viewModel.Name);
+                return Ok(viewModel);
             }
             catch
             {
                 throw;
             }
         }
+        [HttpPost]
+        [Route("list")]
         public async Task<IActionResult> List(SearchViewModel viewModel)
         {
             var query = await _db.Categories.ToListAsync();
@@ -51,7 +54,7 @@ namespace API.Controllers
             {
                 Total = query.Count(),
                 Records = query
-                        .Take((viewModel.Page-1)*viewModel.Size)
+                        .Skip((viewModel.Page-1)*viewModel.Size)
                         .Take(viewModel.Size)
                         .Select(s=> new CategoryViewModel()
                         {
@@ -65,6 +68,8 @@ namespace API.Controllers
 
             return Ok(result);
         }
+        [HttpGet]
+        [Route("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
@@ -72,13 +77,15 @@ namespace API.Controllers
                 Category model = await _db.Categories.FindAsync(id);
                 _db.Categories.Remove(model);
                 await _db.SaveChangesAsync();
-                return Ok(model.Name);
+                return Ok(model);
             }
             catch
             {
                 throw;
             }
         }
+        [HttpPut]
+        [Route("update")]
         public async Task<IActionResult> Update(CategoryViewModel viewModel)
         {
             try
@@ -89,7 +96,21 @@ namespace API.Controllers
                 model.ParentId = viewModel.ParentId;
                 _db.Categories.Update(model);
                 await _db.SaveChangesAsync();
-                return Ok(model.Name);
+                return Ok(model);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        [HttpGet]
+        [Route("item/{id}")]
+        public async Task<IActionResult> Item(int id)
+        {
+            try
+            {
+                Category category = await _db.Categories.FindAsync(id);
+                return Ok(category);
             }
             catch
             {
@@ -98,7 +119,8 @@ namespace API.Controllers
         }
         public async Task<IActionResult> Dropdown()
         {
-            return Ok();
+            var results = await _db.Categories.ToListAsync();
+            return Ok(results);
         }
     }
 }

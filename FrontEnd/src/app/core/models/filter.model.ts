@@ -5,6 +5,6 @@ export class FilterModel{
     constructor(){
         this.keyword = "";
         this.page = 1;
-        this.size = 10;
+        this.size = 100;
     }
 }

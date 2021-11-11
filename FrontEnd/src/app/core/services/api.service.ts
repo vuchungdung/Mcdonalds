@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FilterModel } from "../models/filter.model";
-import { ResponseModel } from "../models/response.model";
 import { map } from 'rxjs/operators';
 import { ResponseStatus } from "../enums/response-status.enum";
 
@@ -12,10 +11,10 @@ import { ResponseStatus } from "../enums/response-status.enum";
 export class ApiService {
     constructor(private http: HttpClient) { }
 
-    getList(url:string,filter: FilterModel):Observable<ResponseModel>{
-        return this.http.post<ResponseModel>(url,filter).pipe(
-            map((data:ResponseModel)=>{
-                if(data.status == ResponseStatus.success){
+    getList(url:string,filter: FilterModel):Observable<any>{
+        return this.http.post<any>(url,filter).pipe(
+            map((data:any)=>{
+                if(data != null){
                     return data;
                 }
                 return null;
@@ -23,10 +22,10 @@ export class ApiService {
         );
     }
 
-    insert(url:string, model:any):Observable<ResponseModel>{
-        return this.http.post<ResponseModel>(url,model).pipe(
-            map((data:ResponseModel)=>{
-                if(data.status == ResponseStatus.success){
+    insert(url:string, model:any):Observable<any>{
+        return this.http.post<any>(url,model).pipe(
+            map((data:any)=>{
+                if(data != null){
                     return data;
                 }
                 return null;
@@ -34,10 +33,10 @@ export class ApiService {
         )
     }
 
-    update(url, model:any):Observable<ResponseModel>{
-        return this.http.put<ResponseModel>(url,model).pipe(
-            map((data:ResponseModel)=>{
-                if(data.status == ResponseStatus.success){
+    update(url, model:any):Observable<any>{
+        return this.http.put<any>(url,model).pipe(
+            map((data:any)=>{
+                if(data != null){
                     return data;
                 }
                 return null;
@@ -45,10 +44,10 @@ export class ApiService {
         )
     }
 
-    delete(url:string, id:number):Observable<ResponseModel>{
-        return this.http.delete<ResponseModel>(url+"?id="+id).pipe(
-            map((data:ResponseModel)=>{
-                if(data.status == ResponseStatus.success){
+    delete(url:string, id:number):Observable<any>{
+        return this.http.get<any>(url+"/"+id).pipe(
+            map((data:any)=>{
+                if(data != null){
                     return data;
                 }
                 return null;
@@ -56,10 +55,10 @@ export class ApiService {
         )
     }
 
-    item(url:string, id:number):Observable<ResponseModel>{
-        return this.http.get<ResponseModel>(url+"?id="+id).pipe(
-            map((data:ResponseModel)=>{
-                if(data.status == ResponseStatus.success){
+    item(url:string, id:number):Observable<any>{
+        return this.http.get<any>(url+"/"+id).pipe(
+            map((data:any)=>{
+                if(data != null){
                     return data;
                 }
                 return null;

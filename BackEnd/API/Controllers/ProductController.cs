@@ -38,7 +38,7 @@ namespace API.Controllers
 
                 await _db.Products.AddAsync(product);
                 await _db.SaveChangesAsync();
-                return Ok(viewModel.Name);
+                return Ok(viewModel);
             }
             catch
             {
@@ -64,7 +64,7 @@ namespace API.Controllers
 
                 _db.Products.Update(product);
                 await _db.SaveChangesAsync();
-                return Ok(viewModel.Name);
+                return Ok(viewModel);
             }
             catch
             {
@@ -112,7 +112,19 @@ namespace API.Controllers
                 }
                 _db.Products.Remove(product);
                 await _db.SaveChangesAsync();
-                return Ok(product.Name);
+                return Ok(product);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        public async Task<IActionResult> Item(int id)
+        {
+            try
+            {
+                Product product = await _db.Products.FindAsync(id);
+                return Ok(product);
             }
             catch
             {
